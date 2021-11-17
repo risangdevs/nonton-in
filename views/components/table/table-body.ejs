@@ -1,0 +1,18 @@
+<tbody>
+  <% data.forEach( data => { %>
+  <tr>
+    <% column.forEach(colname => { 
+      colname.split('.').length > 1 ? data[colname] = data[colname.split('.')[0]][colname.split('.')[1]] : data[colname] 
+      if (helpers) helpers.forEach(help => help.for == colname ? data[colname] = help.helper(data[colname]) : data[colname]) %>
+      <td><%=data[colname]%></td>
+    <% }) %>
+    <% if(action) { %>
+      <td>
+        <% if(action.read) { %> <a href="<%=action.url.replace(':storeid', data.Store ? data.Store.id : '')%>/<%=data.id%>" class="btn btn-info">Read</a> <%}%>
+        <% if(action.update) { %> <a href="<%=action.url.replace(':storeid', data.Store ? data.Store.id : '')%>/<%=data.id%>/edit" class="btn btn-warning">Edit</a> <%}%>
+        <% if(action.delete) { %> <a href="<%=action.url.replace(':storeid', data.Store ? data.Store.id : '')%>/<%=data.id%>/delete" class="btn btn-danger">Delete</a> <%}%>
+      </td>
+    <% } %>
+  </tr>
+  <% }) %>
+</tbody>

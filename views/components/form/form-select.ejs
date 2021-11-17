@@ -1,0 +1,13 @@
+<div class="mb-3">
+  <label for="<%=name%>" class="col-sm-2 col-form-label"><%=label%></label>
+  <select class="form-select" aria-label="<%=name%>" id="<%=name%>" name="<%=name%>">
+    <option selected disabled>Select <%=label%> ...</option>
+    <% data.forEach(data => {%>
+      <% if(dataObjectType) { %>
+        <option value="<%=data.id%>" <% if(value == data.id) { %> selected <% } %>><%=data.name%></option>
+      <% } else { %>
+        <option value="<%=data%>" <% if(value == data) { %> selected <% } %>><%=data%></option>
+      <% } %>
+    <% }) %>
+  </select>
+</div>

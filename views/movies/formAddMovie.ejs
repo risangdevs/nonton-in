@@ -1,0 +1,89 @@
+<%- include('../components/header', {title: 'Login'}); %>
+<%- include('../components/navbar', { user }) %>
+
+<div class="container">
+  <a href="/movies" type="button" class="btn btn-primary" style="margin-top: 5vh;">Back to List Movies</a>
+
+  <h1 style="text-align: center; margin-top: 10vh; margin-bottom: 5vh;">Add Movies</h1>
+  <form action="/movies/add/" method="post">
+    <div class="container">
+      <div class="row" style="margin-top: 5vh; margin-bottom: 5vh;">
+        <div class="col">
+          <label for="titleMovies" class="form-label">Title Movies</label>
+          <input type="text" class="form-control" name="title" placeholder="Input here Title Movies">
+        </div>
+        <div class="col">
+          <label for="titleMovies" class="form-label">Poster URL</label>
+          <input type="text" class="form-control" name="posterURL" placeholder="Example : https:wwww.contoh.com/123456789.jpg">
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 5vh; margin-bottom: 5vh;">
+        <div class="col">
+          <div id="titleMovies" class="form-text">PG Ratings</div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="pgRating" id="ratedG" value="G">
+            <label class="form-check-label" for="ratedG">G</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="pgRating" id="ratedPG" value="PG">
+            <label class="form-check-label" for="ratedPG">PG</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="pgRating" id="ratedPG13" value="PG13">
+            <label class="form-check-label" for="ratedPG13">PG-13</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="pgRating" id="ratedR" value="R">
+            <label class="form-check-label" for="ratedR">R</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="pgRating" id="RatedNC17" value="NC17">
+            <label class="form-check-label" for="RatedNC17">NC-17</label>
+          </div>
+        </div>
+        <div class="col">
+          <div id="titleMovies" class="form-text">Genre Movies</div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="genre" id="actionGenre" value="action">
+            <label class="form-check-label" for="actionGenre">Action</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="genre" id="dramaGenre" value="drama">
+            <label class="form-check-label" for="dramaGenre">Drama</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="genre" id="comedyGenre" value="comedy">
+            <label class="form-check-label" for="comedyGenre">Comedy</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="genre" id="hororGenre" value="horor">
+            <label class="form-check-label" for="hororGenre">Horor</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="genre" id="fiksiGenre" value="fiksi">
+            <label class="form-check-label" for="fiksiGenre">Fiksi</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="col" style="margin-top: 5vh; margin-bottom: 5vh;">
+        <label for="Synopsis" class="form-label">Synopsis</label>
+        <input type="text" class="form-control" name="synopsis" placeholder="Input Synopsis Movies">
+      </div>
+      <div class="col" style="margin-top: 5vh; margin-bottom: 5vh;">
+        <label for="Release Date" class="form-label">Release Date</label>
+        <input type="date" class="form-control" name="date">
+      </div>
+      <div class="col" style="margin-top: 5vh; margin-bottom: 5vh;">
+        <label for="Synopsis" class="form-label">Price</label>
+        <input type="number" class="form-control" name="price" placeholder="Input Price Ticket">
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="margin-top: 5vh; margin-bottom: 15vh;">Add Movies</button>
+    </div>
+</div>
+</form>
+</div>
+
+<%- include('../components/footer') %>

@@ -1,0 +1,9 @@
+<% if(errors) { %>
+<div class="alert alert-danger" role="alert">
+  <ul>
+    <% errors.split(",").forEach(error => { %>
+    <li><%=error%></li>
+    <% }) %>
+  </ul>
+</div>
+<% } %>

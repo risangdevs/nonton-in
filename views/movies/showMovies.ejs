@@ -1,0 +1,47 @@
+<%- include('../components/header', {title: 'Login'}); %>
+<%- include('../components/navbar', { user }) %>
+
+<div class="container">
+  <h1 style="text-align: center; margin-top: 10vh; margin-bottom: 5vh;">List Movies</h1>
+  <form action="/movies/add/" method="post">
+    <div class="container">
+      <center>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Movies Title</th>
+                <th scope="col">Movies Genre</th>
+                <th scope="col">PG Rating</th>
+                <th scope="col">Price Ticket</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <% data.forEach((el) => { %>
+            <tbody>
+              <tr>
+                <th scope="row"><%= el.id %></th>
+                <td><%= el.title %></td>
+                <td><%= el.genre %></td>
+                <td><%= el.pgRating %></td>
+                <td><%= formatMonetary(el.price) %></td>
+                <td>
+                    <a href="/movies/<%= el.id %>/edit" type="button" class="btn btn-success">Edit</a>
+                    <a href="/movies/<%= el.id %>/delete" type="button" class="btn btn-danger">Delete</button>
+                </td>
+          
+              </tr>
+            </tbody>
+            <% }) %>
+            
+          </table>
+          <a href="/movies/add" type="button" class="btn btn-primary" style="margin-top: 5vh; margin-bottom: 15vh;">Add Movies</a>
+
+         
+      </center>
+    </div>
+</div>
+</form>
+</div>
+
+<%- include('../components/footer') %>

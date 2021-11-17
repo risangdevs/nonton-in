@@ -1,0 +1,119 @@
+<%- include('../components/header', {title: 'Buy Ticket'}); %>
+<%- include('../components/navbar', { user }) %>
+<div class="container mb-5">
+  <div class="p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal">Buy Ticket</h1>
+    <p class="fs-5 text-muted"><%=data.title%></p>
+  </div>
+
+  <div class="row">
+    <div class="card mb-3 p-0">
+      <div class="row g-0">
+        <div class="col-md-2">
+          <img src="<%=data.posterUrl%>" class="card-img-top mx-auto" alt="<%=data.name%>">
+        </div>
+        <div class="col-md-10">
+          <div class="card-body">
+            <h5 class="card-title"><%=data.title%></h5>
+            <p class="card-text"><%=data.synopsis%></p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-header">
+          Chat Room
+        </div>
+        <ul id="messages" class="list-group list-group-flush overflow-auto" style="max-height: 450px; min-height: 350px;">
+        </ul>
+        <div class="card-body p-0">
+          <form action="">
+            <input id="username" type="hidden" autocomplete="off" placeholder="username" value="<%=user.id%>"  />
+            <div class="input-group">
+              <input type="text" class="form-control border-0" id="m" autocomplete="off" placeholder="message..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <button class="input-group-text border-0" id="basic-addon2">send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <form method="POST" action="/tickets/buyticket/<%=data.id%>" class="m-auto">
+        <% if(error) { %> <div class="alert alert-danger" role="alert"><%=error%></div> <% } %>
+        <div class="row">
+          <%- include('../components/form/form-input', {type: 'hidden', label: '', name: 'UserId', value: user.id}) %>
+          <%- include('../components/form/form-input', {type: 'hidden', label: '', name: 'MovieId', value: data.id}) %>
+          <div class="col-5">
+            <%- include('../components/form/form-select', {label: 'Date', name: 'date', data: ['20-10-2021', '21-10-2021', '22-10-2021', '23-10-2021', '24-10-2021'], dataObjectType: false, value: false}) %>
+          </div>
+          <div class="col-5">
+            <%- include('../components/form/form-select', {label: 'Time', name: 'time', data: ['11:35', '14:50', '18:05'], dataObjectType: false, value: false}) %>
+          </div>
+        </div>
+        <!-- type -->
+        <!-- price populated dari movie -->
+        <div class="mb-3">
+          <label for="password" class="col-form-label text-center">Choose seat</label>
+          <% bookedSeat.forEach((rowSeat, i) => { %>
+          <div class="btn-toolbar d-flex justify-content-between mb-2" role="toolbar" aria-label="Basic radio toggle button group">
+            <% let rowCode = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'] 
+               rowSeat.forEach((colSeat, j) => { 
+                  let seat = rowCode[i] + (j+1) %>
+                  <div class="btn-group me-2 px-1 flex-grow" role="group" aria-label="Second group">
+                    <input type="radio" class="btn-check" name="seatNumber" id="seatNumber<%=seat%>" value="<%=seat%>" autocomplete="off" <%= colSeat == seat ? 'disabled' : ''%>>
+                    <label class="btn btn-<%= colSeat !== seat ? 'outline-' : ''%>warning" for="seatNumber<%=seat%>"><%=seat%></label>
+                  </div>
+            <% }) %>
+            </div>
+          <% }) %>
+        </div>
+        <input type="submit" value="Book Ticket" class="btn btn-primary d-flex m-auto" />
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+  const form = document.querySelector("form");
+  const messages = document.querySelector("#messages");
+
+  function createMessage(msg) {
+    const li = document.createElement("li");
+    li.className = "list-group-item d-flex justify-content-between"
+    li.innerHTML = `${msg.message} by ${msg.User.username} <small class="text-muted">${msg.createdAt}</small>`;
+    messages.append(li);
+  }
+  function createMessages(msgs) {
+    msgs.forEach(createMessage);
+  }
+
+  fetch("/messages")
+    .then((res) => res.json())
+    .then(createMessages);
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    socket.emit("chat message",
+      JSON.stringify({
+        message: document.querySelector("#m").value,
+        UserId: document.querySelector("#username").value,
+      })
+    );
+    e.target.reset();
+  });
+
+  socket.on("chat message", function (msgs) {
+    console.log(msgs);
+    messages.innerHTML = "";
+    createMessages(msgs);
+  });
+</script>
+
+<%- include('../components/footer') %>

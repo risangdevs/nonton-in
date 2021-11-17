@@ -1,0 +1,51 @@
+<%- include('../components/header', {title: 'My Ticket'}); %> <%-
+include('../components/navbar', { user }) %>
+<div class="container">
+  <div class="p-4 mx-auto">
+    <h1 class="display-4 fw-normal text-center">My Ticket</h1>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="d-flex flex-column w-75">
+      <% if (message) { %> 
+        <div class="alert alert-danger" role="alert">
+          <%=message%>
+        </div> 
+      <% } %>
+      <% data.forEach(ticket => { %>
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-3">
+            <img src="<%=ticket.Movie.posterUrl%>" class="img-fluid rounded-start" alt="<%=ticket.Movie.title%>" />
+          </div>
+          <div class="col-md-9">
+            <div class="card-body">
+              <h4 class="card-title text-end">
+                <span class="text-muted">TICKET#</span> <%=ticket.ticketNumber%>
+              </h4>
+              <div class="row">
+                <div class="col-6">
+                  <h6 class="card-title text-muted">Date</h6>
+                  <p class="card-text"><%=formatDate(ticket.showTime)%></p>
+                </div>
+                <div class="col-6">
+                  <h6 class="card-title text-muted">Time</h6>
+                  <p class="card-text"><%=formatTime(ticket.showTime)%></p>
+                </div>
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Type: <%=ticket.ticketType%></li>
+              <li class="list-group-item">Seat Number: <%=ticket.seatNumber%></li>
+              <li class="list-group-item">Price: <%=formatMonetary(ticket.price)%></li>
+            </ul>
+            <div class="card-body d-flex justify-content-end">
+              <a href="/tickets/<%=ticket.id%>/cancel" class="btn btn-danger">Cancel Ticket</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% })%>
+    </div>
+  </div>
+</div>
+<%- include('../components/footer') %>

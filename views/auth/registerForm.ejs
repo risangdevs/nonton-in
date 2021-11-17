@@ -1,0 +1,21 @@
+<%- include('../components/header', {title: 'Register new Account'}); %>
+<%- include('../components/navbar', { user } ) %>
+<div class="container">
+  <div class="p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal">Register new Account</h1>
+    <p class="fs-5 text-muted">Please fill the form below to register!</p>
+  </div>
+  <form method="POST" action="/auth/register" class="m-auto w-50 ">
+    <% if(error) { 
+      error.split(",.").forEach(err => { %>
+      <div class="alert alert-danger" role="alert">
+        <%=err%>
+      </div>
+    <% })} %>
+    <%- include('../components/form/form-input', {type: 'text', label: 'Username', name: 'username', value: false}) %>
+    <%- include('../components/form/form-input', {type: 'email', label: 'Email', name: 'email', value: false}) %>
+    <%- include('../components/form/form-input', {type: 'password', label: 'Password', name: 'password', value: false}) %>
+    <input type="submit" value="Submit" class="btn btn-primary d-flex m-auto" />
+  </form>
+</div>
+<%- include('../components/footer') %>

@@ -1,0 +1,8 @@
+<thead class="table-dark">
+  <tr>
+    <% header.forEach( el => { %>
+    <th><%=el%></th>
+    <%}) %>
+    <% if(action) { %><th>Action</th><% } %>
+  </tr>
+</thead>
