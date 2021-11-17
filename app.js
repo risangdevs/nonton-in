@@ -1,5 +1,5 @@
 const express = require("express");
-const router = require("./routes/index");
+const router = require("./routers");
 const sessions = require("express-session");
 const HomeController = require("./controllers/homeController");
 
@@ -42,7 +42,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", HomeController.home);
+app.get("/", HomeController.readMovie);
 app.use("/", router);
 
 const ChatRoomController = require("./controllers/chatRoomController");

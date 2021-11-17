@@ -11,6 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Movie.hasMany(models.Ticket)
+    }
+
+    get formatDate() {
+      return this.releaseDate.toISOString().split("T")[0]
     }
   };
   Movie.init({

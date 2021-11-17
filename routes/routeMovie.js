@@ -1,15 +1,17 @@
-const express = require("express");
-const MovieController = require("../controllers/movieController");
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
+const movieController = require('../controllers/movieController')
 
 // session middleware
 router.use((req, res, next) => {
-    !req.session.user?.id ? res.redirect('/auth/login') : next()
+    req.session.user?.id && (req.session.user?.role == 'admin') ? next() : res.redirect('/')
 })
 
-router.get("/", MovieController.listTickets);
-router.get("/buyticket/:MovieId", MovieController.getTicketAddForm);
-router.post("/buyticket/:MovieId", MovieController.postTicketAddForm);
-router.get("/:ticketId/cancel", MovieController.destroyTicket);
+router.get('/', movieController.readMovie)
+router.get('/add', movieController.createFormMovie)
+router.post('/add', movieController.postCreateFormMovie)
+router.get('/:movieId/edit', movieController.editFormMovie)
+router.post('/:movieId/edit', movieController.postEditFormMovie)
+router.get('/:movieId/delete', movieController.destroyMovie)
 
-module.exports = router;
+module.exports = router
