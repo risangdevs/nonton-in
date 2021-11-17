@@ -42,7 +42,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", HomeController.readMovie);
+app.get("/", HomeController.home);
 app.use("/", router);
 
 const ChatRoomController = require("./controllers/chatRoomController");
