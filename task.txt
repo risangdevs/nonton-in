@@ -1,0 +1,24 @@
+NONTON-in Task
+
+- Style with css for Login Page and Registration Page
+- Presentation file
+- Need to check together for hasync password Bycrypt 
+- Check method add 
+- Create button search based on Genre
+- Etc.
+
+
+The Apps on going Develop http://localhost:8080
+
+
+first install
+npm i pg express ejs sequelize
+npm i -D nodemon
+npm i -D sequelize-cli
+npm i bcrypt 
+npm i express-session
+npm i cors
+npm i session
+npm i socket.io
+npm i cookie-parser
+npm i heroku 

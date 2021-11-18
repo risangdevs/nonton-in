@@ -20,6 +20,9 @@ module.exports = {
       seatNumber: {
         type: Sequelize.STRING
       },
+      showTime: {
+        type: Sequelize.DATE
+      },
       price: {
         type: Sequelize.INTEGER
       },

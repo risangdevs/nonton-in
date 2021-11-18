@@ -18,13 +18,35 @@ module.exports = (sequelize, DataTypes) => {
     ticketNumber: DataTypes.STRING,
     ticketType: DataTypes.STRING,
     dateMovie: DataTypes.DATE,
-    seatNumber: DataTypes.STRING,
+    seatNumber: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Please chose seat number'
+        }
+      }
+    },
+    showTime: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Please chose showtime date and time'
+        }
+      }
+    },
     price: DataTypes.INTEGER,
     MovieId: DataTypes.INTEGER,
     UserId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Ticket',
+    hooks: {
+      beforeCreate: (instance) => {
+        instance.ticketNumber = instance.seatNumber + instance.MovieId.padStart(5, "0") + formatDate(instance.showTime).split("-").join("");
+        instance.ticketType = 'Pro'
+      },
+    }
   });
   return Ticket;
 };

@@ -1,45 +1,65 @@
-<%- include('./components/header', {title: 'Home'}); %>
-<%- include('./components/navbar', { user }) %>
+<%- include('./components/header', {title: 'Home' }); %>
+  <%- include('./components/navbar', { user }) %>
+    <h1 class="retroshadow">
+      <dl>
+        <dt>Deep into The Movie</dt>
+      </dl>
+      <!-- <a>watch now !</a> -->
+      <!-- Start-Up -->
+    </h1>
+    <div class="container">
 
-<div class="container">
-  <div class="p-3 pb-md-4 mx-auto text-center">
-    <h1 class="display-4 fw-normal">Now Playing</h1>
-    <p class="fs-5 text-muted">Movie premiere now!</p>
-  </div>
+      <!-- <div class="p-3 pb-md-4 mx-auto text-center">
+        <h1 class="deepshadow">Deep into The Movie </h1>
+        <p class="fs-5 text-muted"></p>
+      </div> -->
 
-  <form class="row g-3" method="GET" action="/">
-    <div class="col">
-      <label for="search" class="visually-hidden">Search</label>
-      <input type="text" class="form-control" name="search" id="search" placeholder="Search movie Title...">
-    </div>
-    <div class="col-auto">
-      <button type="submit" class="btn btn-primary mb-3">Search</button>
-    </div>
-  </form>
-
-  <div class="row">
-    <% data.forEach((movie) => { %>
-    <div class="col-sm-3 py-3">
-      <div class="card">
-        <img src="<%=movie.posterUrl%>" class="card-img-top" alt="<%=movie.title%>">
-        <div class="card-body">
-          <h5 class="card-title"><%=movie.title%></h5>
-          <p class="card-text"><%=movie.synopsis%></p>
+      <form class="row g-3" method="GET" action="/">
+        <div class="col">
+          <label for="search" class="visually-hidden">Search</label>
+          <input type="text" class="form-control" name="search" id="search" placeholder="Search movie Title...">
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Genre : <%=movie.genre%></li>
-          <li class="list-group-item">Rating : <%=movie.pgRating%></li>
-          <li class="list-group-item">Price :  <%=formatMonetary(movie.price)%></li>
-          <li class="list-group-item">Release Date : <%=formatDate(movie.releaseDate)%></li>
-        </ul>
-        <div class="card-body">
-          <a href="/tickets/buyticket/<%=movie.id%>" class="card-link">Buy Ticket</a>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">Search</button>
         </div>
+      </form>
+
+      <div class="row">
+        <% data.forEach((movie)=> { %>
+          <div class="col-sm-3 py-3">
+            <div class="card">
+              <img src="<%=movie.movieUrl%>" class="card-img-top" alt="<%=movie.title%>">
+              <div class="card-body">
+                <h5 class="card-title text-center shadow">
+                  <dl>
+                    <dt>
+                      <%=movie.title%>
+                    </dt>
+                  </dl>
+                </h5>
+                <br>
+                <p class="card-text">
+                  <%=movie.description%>
+                </p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Genre : <%=movie.genre%>
+                </li>
+                <li class="list-group-item">Rating : <%=movie.ratingMovie%>
+                </li>
+                <li class="list-group-item">Price : <%=formatMonetary(movie.price)%>
+                </li>
+                <li class="list-group-item">Release Date : <%=formatDate(movie.releaseDate)%>
+                </li>
+              </ul>
+              <div class="card-body">
+                <a href="/tickets/buyticket/<%=movie.id%>" class="card-link">Buy Ticket</a>
+              </div>
+            </div>
+          </div>
+          <% }) %>
       </div>
+
+
     </div>
-    <% }) %>
-  </div>
-
-
-</div>
-<%- include('./components/footer') %>
+    <%- include('./components/footer') %>

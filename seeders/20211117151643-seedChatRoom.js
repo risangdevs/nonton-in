@@ -6,7 +6,14 @@ module.exports = {
       {
         MovieId: 10,
         UserId: 1,
-        message: "Film nya keren",
+        message: "Best Movie",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        MovieId: 10,
+        UserId: 2,
+        message: "Nice !!!",
         createdAt: new Date(),
         updatedAt: new Date()
       }

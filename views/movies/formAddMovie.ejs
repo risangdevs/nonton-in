@@ -1,89 +1,95 @@
-<%- include('../components/header', {title: 'Login'}); %>
-<%- include('../components/navbar', { user }) %>
+<%- include('../components/header', {title: 'Login' }); %>
+  <%- include('../components/navbar', { user }) %>
 
-<div class="container">
-  <a href="/movies" type="button" class="btn btn-primary" style="margin-top: 5vh;">Back to List Movies</a>
-
-  <h1 style="text-align: center; margin-top: 10vh; margin-bottom: 5vh;">Add Movies</h1>
-  <form action="/movies/add/" method="post">
     <div class="container">
-      <div class="row" style="margin-top: 5vh; margin-bottom: 5vh;">
-        <div class="col">
-          <label for="titleMovies" class="form-label">Title Movies</label>
-          <input type="text" class="form-control" name="title" placeholder="Input here Title Movies">
-        </div>
-        <div class="col">
-          <label for="titleMovies" class="form-label">Poster URL</label>
-          <input type="text" class="form-control" name="posterURL" placeholder="Example : https:wwww.contoh.com/123456789.jpg">
-        </div>
-      </div>
+      <a href="/movies" type="button" class="btn btn-primary" style="margin-top: 5vh;">Back to List Movies</a>
 
-      <div class="row" style="margin-top: 5vh; margin-bottom: 5vh;">
-        <div class="col">
-          <div id="titleMovies" class="form-text">PG Ratings</div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pgRating" id="ratedG" value="G">
-            <label class="form-check-label" for="ratedG">G</label>
+      <h1 style="text-align: center; margin-top: 10vh; margin-bottom: 5vh;">Add Movies</h1>
+      <form action="/movies/add/" method="post">
+        <div class="container">
+          <div class="row" style="margin-top: 5vh; margin-bottom: 5vh;">
+            <div class="col">
+              <label for="titleMovies" class="form-label">Title Movies</label>
+              <input type="text" class="form-control" name="title" placeholder="Input here Title Movies">
+            </div>
+            <div class="col">
+              <label for="titleMovies" class="form-label">Movie URL</label>
+              <input type="text" class="form-control" name="movieURL"
+                placeholder="Example : https:wwww.contoh.com/123456789.jpg">
+            </div>
           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pgRating" id="ratedPG" value="PG">
-            <label class="form-check-label" for="ratedPG">PG</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pgRating" id="ratedPG13" value="PG13">
-            <label class="form-check-label" for="ratedPG13">PG-13</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pgRating" id="ratedR" value="R">
-            <label class="form-check-label" for="ratedR">R</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pgRating" id="RatedNC17" value="NC17">
-            <label class="form-check-label" for="RatedNC17">NC-17</label>
-          </div>
-        </div>
-        <div class="col">
-          <div id="titleMovies" class="form-text">Genre Movies</div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="genre" id="actionGenre" value="action">
-            <label class="form-check-label" for="actionGenre">Action</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="genre" id="dramaGenre" value="drama">
-            <label class="form-check-label" for="dramaGenre">Drama</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="genre" id="comedyGenre" value="comedy">
-            <label class="form-check-label" for="comedyGenre">Comedy</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="genre" id="hororGenre" value="horor">
-            <label class="form-check-label" for="hororGenre">Horor</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="genre" id="fiksiGenre" value="fiksi">
-            <label class="form-check-label" for="fiksiGenre">Fiksi</label>
-          </div>
-        </div>
-      </div>
 
-      <div class="col" style="margin-top: 5vh; margin-bottom: 5vh;">
-        <label for="Synopsis" class="form-label">Synopsis</label>
-        <input type="text" class="form-control" name="synopsis" placeholder="Input Synopsis Movies">
-      </div>
-      <div class="col" style="margin-top: 5vh; margin-bottom: 5vh;">
-        <label for="Release Date" class="form-label">Release Date</label>
-        <input type="date" class="form-control" name="date">
-      </div>
-      <div class="col" style="margin-top: 5vh; margin-bottom: 5vh;">
-        <label for="Synopsis" class="form-label">Price</label>
-        <input type="number" class="form-control" name="price" placeholder="Input Price Ticket">
-      </div>
+          <div class="row" style="margin-top: 5vh; margin-bottom: 5vh;">
+            <div class="col">
+              <div id="titleMovies" class="form-text">Rating Movie</div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ratingMovie" id="rated6" value="6">
+                <label class="form-check-label" for="rated6">6</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ratingMovie" id="rated7" value="7">
+                <label class="form-check-label" for="rated7">7</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ratingMovie" id="rated8" value="8">
+                <label class="form-check-label" for="rated8">8</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ratingMovie" id="rated9" value="9">
+                <label class="form-check-label" for="rated9">9</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ratingMovie" id="rated10" value="10">
+                <label class="form-check-label" for="rated10">10</label>
+              </div>
+            </div>
+            <div class="col">
+              <div id="titleMovies" class="form-text">Genre Movies</div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genre" id="actionGenre" value="action">
+                <label class="form-check-label" for="actionGenre">Action</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genre" id="dramaGenre" value="drama">
+                <label class="form-check-label" for="dramaGenre">Drama</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genre" id="comedyGenre" value="comedy">
+                <label class="form-check-label" for="comedyGenre">Comedy</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genre" id="adventureGenre" value="adventure">
+                <label class="form-check-label" for="adventureGenre">Adventure</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genre" id="sci-fiGenre" value="sci-fi">
+                <label class="form-check-label" for="sci-fiGenre">Sci-fi</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genre" id="biographyGenre" value="biography">
+                <label class="form-check-label" for="biographyGenre">Biography</label>
+              </div>
+            </div>
+          </div>
 
-      <button type="submit" class="btn btn-primary" style="margin-top: 5vh; margin-bottom: 15vh;">Add Movies</button>
+          <div class="col" style="margin-top: 5vh; margin-bottom: 5vh;">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" name="description" placeholder="Input Description Movies">
+          </div>
+          <div class="col" style="margin-top: 5vh; margin-bottom: 5vh;">
+            <label for="Release Date" class="form-label">Release Date</label>
+            <input type="date" class="form-control" name="date">
+          </div>
+          <div class="col" style="margin-top: 5vh; margin-bottom: 5vh;">
+            <label for="Price" class="form-label">Price</label>
+            <input type="number" class="form-control" name="price" placeholder="Input Price Ticket">
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="margin-top: 5vh; margin-bottom: 15vh;">Add
+            Movies</button>
+        </div>
     </div>
-</div>
-</form>
-</div>
+    </form>
+    </div>
 
-<%- include('../components/footer') %>
+    <%- include('../components/footer') %>

@@ -1,88 +1,104 @@
-<%- include('../components/header', {title: 'Login'}); %>
-<%- include('../components/navbar', { user }) %>
+<%- include('../components/header', {title: 'Login' }); %>
+  <%- include('../components/navbar', { user }) %>
 
-<div class="container">
-  <a href="/movies" type="button" class="btn btn-primary" style="margin-top: 5vh;">Back to List Movies</a>
-  <h1 style="text-align: center; margin-top: 10vh; margin-bottom: 5vh;">Edit Movies</h1> 
-  <form action="/movies/<%= data.id %>/edit" method="post">
     <div class="container">
-      <div class="row" style="margin-top: 5vh; margin-bottom: 5vh;">
-        <div class="col">
-          <label for="titleMovies" class="form-label">Title Movies</label>
-          <input type="text" class="form-control" name="title" value="<%= data.title %>">
-        </div>
-        <div class="col">
-          <label for="titleMovies" class="form-label">Poster URL</label>
-          <input type="text" class="form-control" name="posterURL" value="<%= data.posterUrl %>">
-        </div>
-      </div>
+      <a href="/movies" type="button" class="btn btn-primary" style="margin-top: 5vh;">Back to List Movies</a>
+      <h1 style="text-align: center; margin-top: 10vh; margin-bottom: 5vh;">Edit Movies</h1>
+      <form action="/movies/<%= data.id %>/edit" method="post">
+        <div class="container">
+          <div class="row" style="margin-top: 5vh; margin-bottom: 5vh;">
+            <div class="col">
+              <label for="titleMovies" class="form-label">Title Movies</label>
+              <input type="text" class="form-control" name="title" value="<%= data.title %>">
+            </div>
+            <div class="col">
+              <label for="titleMovies" class="form-label">Movie URL</label>
+              <input type="text" class="form-control" name="movieURL" value="<%= data.movieUrl %>">
+            </div>
+          </div>
 
-      <div class="row" style="margin-top: 5vh; margin-bottom: 5vh;">
-        <div class="col">
-          <div id="titleMovies" class="form-text">PG Ratings</div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pgRating" id="ratedG" value="G" <%= data.pgRating == 'G' ? 'checked' : '' %> >
-            <label class="form-check-label" for="ratedG">G</label>
+          <div class="row" style="margin-top: 5vh; margin-bottom: 5vh;">
+            <div class="col">
+              <div id="titleMovies" class="form-text">Movie Ratings</div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ratingMovie" id="rated6" value="6"
+                  <%=data.ratingMovie=='6' ? 'checked' : '' %> >
+                <label class="form-check-label" for="rated6">6</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ratingMovie" id="rated7" value="7"
+                  <%=data.ratingMovie=='7' ? 'checked' : '' %>>
+                <label class="form-check-label" for="rated7">7</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ratingMovie" id="rated8" value="8"
+                  <%=data.ratingMovie=='8' ? 'checked' : '' %>>
+                <label class="form-check-label" for="rated8">8</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ratingMovie" id="rated9" value="9"
+                  <%=data.ratingMovie=='9' ? 'checked' : '' %>>
+                <label class="form-check-label" for="rated9">9</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="ratingMovie" id="rated10" value="10"
+                  <%=data.ratingMovie=='10' ? 'checked' : '' %>>
+                <label class="form-check-label" for="rated10">10</label>
+              </div>
+            </div>
+            <div class="col">
+              <div id="titleMovies" class="form-text">Genre Movies</div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genre" id="actionGenre" value="action"
+                  <%=data.genre=='Action' ? 'checked' : '' %>>
+                <label class="form-check-label" for="actionGenre">Action</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genre" id="dramaGenre" value="drama"
+                  <%=data.genre=='Drama' ? 'checked' : '' %>>
+                <label class="form-check-label" for="dramaGenre">Drama</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genre" id="comedyGenre" value="comedy"
+                  <%=data.genre=='Comedy' ? 'checked' : '' %>>
+                <label class="form-check-label" for="comedyGenre">Comedy</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genre" id="adventureGenre" value="adventure"
+                  <%=data.genre=='Adventure' ? 'checked' : '' %>>
+                <label class="form-check-label" for="adventureGenre">adventure</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genre" id="sci-fiGenre" value="sci-fi"
+                  <%=data.genre=='Sci-fi' ? 'checked' : '' %>>
+                <label class="form-check-label" for="sci-fiGenre">Sci-fi</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genre" id="biographyGenre" value="biography"
+                  <%=data.genre=='Biography' ? 'checked' : '' %>>
+                <label class="form-check-label" for="biographyGenre">Biography</label>
+              </div>
+            </div>
           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pgRating" id="ratedPG" value="PG" <%= data.pgRating == 'PG' ? 'checked' : '' %>>
-            <label class="form-check-label" for="ratedPG">PG</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pgRating" id="ratedPG13" value="PG13" <%= data.pgRating == 'PG13' ? 'checked' : '' %>>
-            <label class="form-check-label" for="ratedPG13">PG-13</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pgRating" id="ratedR" value="R" <%= data.pgRating == 'R' ? 'checked' : '' %>>
-            <label class="form-check-label" for="ratedR">R</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="pgRating" id="RatedNC17" value="NC17" <%= data.pgRating == 'NC17' ? 'checked' : '' %>>
-            <label class="form-check-label" for="RatedNC17">NC-17</label>
-          </div>
-        </div>
-        <div class="col">
-          <div id="titleMovies" class="form-text">Genre Movies</div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="genre" id="actionGenre" value="action" <%= data.genre == 'action' ? 'checked' : '' %>>
-            <label class="form-check-label" for="actionGenre">Action</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="genre" id="dramaGenre" value="drama" <%= data.genre == 'drama' ? 'checked' : '' %>>
-            <label class="form-check-label" for="dramaGenre">Drama</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="genre" id="comedyGenre" value="comedy" <%= data.genre == 'comedy' ? 'checked' : '' %>>
-            <label class="form-check-label" for="comedyGenre">Comedy</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="genre" id="hororGenre" value="horor" <%= data.genre == 'horor' ? 'checked' : '' %>>
-            <label class="form-check-label" for="hororGenre">Horor</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="genre" id="hororGenre" value="fiksi" <%= data.genre == 'fiksi' ? 'checked' : '' %>>
-            <label class="form-check-label" for="hororGenre">Fiksi</label>
-          </div>
-        </div>
-      </div>
 
-      <div class="col" style="margin-top: 5vh; margin-bottom: 5vh;">
-        <label for="Synopsis" class="form-label">Synopsis</label>
-        <input type="text" class="form-control" name="synopsis" value="<%= data.synopsis %>">
-      </div>
-      <div class="col" style="margin-top: 5vh; margin-bottom: 5vh;">
-        <label for="Release Date" class="form-label">Release Date</label>
-        <input type="date" class="form-control" name="date" value="<%= data.formatDate %>">
-      </div>
-      <div class="col" style="margin-top: 5vh; margin-bottom: 5vh;">
-        <label for="Price Ticket" class="form-label">Price Ticket</label>
-        <input type="number" class="form-control" name="price" value="<%= data.price %>">
-      </div>
+          <div class="col" style="margin-top: 5vh; margin-bottom: 5vh;">
+            <label for="Description" class="form-label">Description</label>
+            <input type="text" class="form-control" name="description" value="<%= data.description %>">
+          </div>
+          <div class="col" style="margin-top: 5vh; margin-bottom: 5vh;">
+            <label for="Release Date" class="form-label">Release Date</label>
+            <input type="date" class="form-control" name="date" value="<%= data.formatDate %>">
+          </div>
+          <div class="col" style="margin-top: 5vh; margin-bottom: 5vh;">
+            <label for="Price Ticket" class="form-label">Price Ticket</label>
+            <input type="number" class="form-control" name="price" value="<%= data.price %>">
+          </div>
 
-      <button type="submit" value="postEditFormMovie" class="btn btn-primary" style="margin-top: 5vh; margin-bottom: 15vh;">Update Movies</button>
+          <button type="submit" value="postEditFormMovie" class="btn btn-primary"
+            style="margin-top: 5vh; margin-bottom: 15vh;">Update Movies</button>
+        </div>
     </div>
-</div>
-</form>
-</div>
+    </form>
+    </div>
 
-<%- include('../components/footer') %>
+    <%- include('../components/footer') %>
