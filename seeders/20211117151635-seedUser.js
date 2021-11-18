@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    let data = require("../data/users.json")
+    let data = require("../data/user.json")
     data.forEach(el => {
       el.password = bcrypt.hashSync(el.password, bcrypt.genSaltSync(5))
       el.createdAt = new Date()
