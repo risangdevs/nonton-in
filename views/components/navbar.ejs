@@ -206,6 +206,7 @@ align-items: center;
         <li><a href="/">Nonton-In</a></li>
         <% if(user) { %>
           <li><a href="/tickets">My Tickets</a></li>
+          <li><a>Logged in as : <%=user.userName%></a></li>
           <% } %>
             <% if(user?.role=='admin' ) { %>
               <li><a href="/movies">Movies Management</a></li>
