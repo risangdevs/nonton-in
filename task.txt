@@ -7,6 +7,11 @@ NONTON-in Task
 - Create button search based on Genre
 - Etc.
 
+Update
+- Registartion bcrypt has been solved ============ only require bcrypt
+- BuyTicket has been solved  ============ just error in 1 charachter ";"
+- BookSeat another customers has been solved
+
 
 The Apps on going Develop http://localhost:8080
 

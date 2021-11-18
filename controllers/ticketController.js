@@ -56,7 +56,10 @@ class TicketController {
                 return Ticket.create(params)
             })
             .then(() => res.redirect("/tickets"))
-            .catch((err) => res.redirect(`/tickets/buyticket/${MovieId}?error=${err.message.split('\n').map(el => el.replace("Validation error: ", "")).join(".")}`));
+            .catch((err) => {
+                console.log(err);
+                res.redirect(`/tickets/buyticket/${MovieId}?error=${err.message.split('\n').map(el => el.replace("Validation error: ", "")).join(".")}`)
+            });
     }
 
     static destroyTicket(req, res) {

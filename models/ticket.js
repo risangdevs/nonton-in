@@ -1,4 +1,5 @@
 'use strict';
+const { formatDate, formatTime } = require("../helpers/dateFormatter")  // create static method formatDate
 const {
   Model
 } = require('sequelize');

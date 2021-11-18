@@ -12,14 +12,14 @@
         <div class="card mb-3 p-0">
           <div class="row g-0">
             <div class="col-md-2">
-              <img src="<%=data.posterUrl%>" class="card-img-top mx-auto" alt="<%=data.name%>">
+              <img src="<%=data.movieUrl%>" class="card-img-top mx-auto" alt="<%=data.name%>">
             </div>
             <div class="col-md-10">
               <div class="card-body">
                 <h5 class="card-title text-center shadow">
                   <dl>
                     <dt>
-                      <%=movie.title%>
+                      <%=data.title%>
                     </dt>
                   </dl>
                 </h5>
@@ -69,7 +69,7 @@
                       data.id}) %>
                       <div class="col-5">
                         <%- include('../components/form/form-select', {label: 'Date' , name: 'date' , data:
-                          ['20-10-2021', '21-10-2021' , '22-10-2021' , '23-10-2021' , '24-10-2021' ], dataObjectType:
+                          ['20-10-2021', '21-10-2021' , '10-10-2021' , '23-10-2021' , '24-10-2021' ], dataObjectType:
                           false, value: false}) %>
                       </div>
                       <div class="col-5">
@@ -84,17 +84,17 @@
                   <% bookedSeat.forEach((rowSeat, i)=> { %>
                     <div class="btn-toolbar d-flex justify-content-between mb-2" role="toolbar"
                       aria-label="Basic radio toggle button group">
-                      <% let rowCode=['A', 'B' , 'C' , 'D' , 'E' , 'F' , 'G' , 'H' ] rowSeat.forEach((colSeat, j)=> {
-                        let seat = rowCode[i] + (j+1) %>
-                        <div class="btn-group me-2 px-1 flex-grow" role="group" aria-label="Second group">
-                          <input type="radio" class="btn-check" name="seatNumber" id="seatNumber<%=seat%>"
-                            value="<%=seat%>" autocomplete="off" <%=colSeat==seat ? 'disabled' : '' %>>
-                          <label class="btn btn-<%= colSeat !== seat ? 'outline-' : ''%>warning"
-                            for="seatNumber<%=seat%>">
-                            <%=seat%>
-                          </label>
-                        </div>
-                        <% }) %>
+                      <% let rowCode=['A', 'B' , 'C' , 'D' , 'E' , 'F' , 'G' , 'H' ]; rowSeat.forEach((colSeat, j)=> {%>
+                        <%let seat=rowCode[i] + (j+1) %>
+                          <div class="btn-group me-2 px-1 flex-grow" role="group" aria-label="Second group">
+                            <input type="radio" class="btn-check" name="seatNumber" id="seatNumber<%=seat%>"
+                              value="<%=seat%>" autocomplete="off" <%=colSeat==seat ? 'disabled' : '' %>>
+                            <label class="btn btn-<%= colSeat !== seat ? 'outline-' : ''%>warning"
+                              for="seatNumber<%=seat%>">
+                              <%=seat%>
+                            </label>
+                          </div>
+                          <% }) %>
                     </div>
                     <% }) %>
                 </div>
