@@ -72,7 +72,7 @@ class TicketController {
                 // Ticket.destroy({ where: params })
                 //     .then(() => res.redirect(`/tickets/?message=${message}`))
             })
-            .then((message)=>{
+            .then((message)=>{      // added 3 lines (75,76,77) to fix nested promise
                 Ticket.destroy({ where: params })
                     .then(() => res.redirect(`/tickets/?message=${message}`))
             })
