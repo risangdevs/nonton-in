@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Ticket.belongsTo(models.Movie)
     }
+    static formatDate(value){
+      return value.toISOString().split("T")[0];
+    }
   };
   Ticket.init({
     ticketNumber: DataTypes.STRING,
