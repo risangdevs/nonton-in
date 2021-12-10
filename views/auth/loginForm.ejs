@@ -2,9 +2,10 @@
   <%- include('../components/navbar', { user }) %>
     <div class="container">
       <div class="p-3 pb-md-4 mx-auto text-center">
-        <h1 class="display-4 fw-normal">LOGIN</h1>
+        <h1 class="display-4 fw-normal" style="color: #ffffff;">LOGIN</h1><br/>
         <p class="fs-5 text-muted">Please fill the form below to login!</p>
       </div>
+      <div style="border: solid 1px black; margin: 0 300px;padding: 10px 20px;border-radius: 50px;box-shadow: 10px;background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Red_cinema_sits_%2811285613595%29.jpg/640px-Red_cinema_sits_%2811285613595%29.jpg)"><br/>
       <form method="POST" action="/auth/login" class="m-auto w-50 ">
         <% if(error) { %>
           <div class="alert alert-danger" role="alert">
@@ -18,7 +19,7 @@
                   value: false}) %>
                   <%- include('../components/form/form-input', {type: 'password' , label: 'Password' , name: 'password'
                     , value: false}) %>
-                    <input type="submit" value="Submit" class="btn btn-primary d-flex m-auto" />
-      </form>
+                    <input type="submit" value="Submit" class="btn btn-primary d-flex m-auto" /><br/>
+      </form></div>
     </div>
     <%- include('../components/footer') %>

@@ -113,7 +113,7 @@
       function createMessage(msg) {
         const li = document.createElement("li");
         li.className = "list-group-item d-flex justify-content-between"
-        li.innerHTML = `${msg.message} by ${msg.User.username} <small class="text-muted">${msg.createdAt}</small>`;
+        li.innerHTML = `${msg.message} by ${msg.User.userName} <small class="text-muted">${msg.createdAt}</small>`;
         messages.append(li);
       }
       function createMessages(msgs) {

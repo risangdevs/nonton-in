@@ -27,7 +27,7 @@ feature dalam web-app =====================> Done (implement with {socket.io} fo
 2. Validasi dari Sequelize  =====================> Done
 3. Enkripsi dengan BcryptJs =======================================> Done
 4. Hooks =====================> Done
-5. Static method pada Model (buatan sendiri) =====================> Not Yet
+5. Static method pada Model (buatan sendiri) =====================> Done
 6. Instance method pada Model atau getter (buatan sendiri) =====================> Done
 7. Middleware & Session untuk sistem login =====================> Done
 8. Helper =====================> Done using formatTime
